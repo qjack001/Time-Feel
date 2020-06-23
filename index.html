@@ -22,6 +22,7 @@
 		<meta name="author" content="Jack Guinane" />
 		<meta name="application-name" content="Time Feel">
 		<meta name="description" content="A simple clock that gives the feeling of what time it is.">
+		<script type="text/javascript" src="./suncalc.js"></script>
 		
 		<style>
 			body
@@ -37,8 +38,6 @@
 			{
 				width: 100vw;
 				height: 100vw;
-				max-width: 800px;
-				max-height: 800px;
 				box-sizing: border-box;
 				-webkit-mask-image: -webkit-radial-gradient( hsla(0, 0%, 0%, 100%) 60%, hsla(0, 0%, 0%, 99.37%) 61.81%, hsla(0, 0%, 0%, 97.56%) 63.26%, hsla(0, 0%, 0%, 94.71%) 64.4%, hsla(0, 0%, 0%, 90.89%) 65.27%, hsla(0, 0%, 0%, 86.2%) 65.93%, hsla(0, 0%, 0%, 80.68%) 66.4%, hsla(0, 0%, 0%, 74.39%) 66.74%, hsla(0, 0%, 0%, 67.38%) 66.99%, hsla(0, 0%, 0%, 59.69%) 67.2%, hsla(0, 0%, 0%, 51.35%) 67.41%, hsla(0, 0%, 0%, 42.39%) 67.66%, hsla(0, 0%, 0%, 32.84%) 68.0%, hsla(0, 0%, 0%, 22.71%) 68.47%, hsla(0, 0%, 0%, 12.03%) 69.13%, hsla(0, 0%, 0%, 0%) 70%);
 				mask-image: -o-radial-gradient( hsla(0, 0%, 0%, 100%) 60%, hsla(0, 0%, 0%, 99.37%) 61.81%, hsla(0, 0%, 0%, 97.56%) 63.26%, hsla(0, 0%, 0%, 94.71%) 64.4%, hsla(0, 0%, 0%, 90.89%) 65.27%, hsla(0, 0%, 0%, 86.2%) 65.93%, hsla(0, 0%, 0%, 80.68%) 66.4%, hsla(0, 0%, 0%, 74.39%) 66.74%, hsla(0, 0%, 0%, 67.38%) 66.99%, hsla(0, 0%, 0%, 59.69%) 67.2%, hsla(0, 0%, 0%, 51.35%) 67.41%, hsla(0, 0%, 0%, 42.39%) 67.66%, hsla(0, 0%, 0%, 32.84%) 68.0%, hsla(0, 0%, 0%, 22.71%) 68.47%, hsla(0, 0%, 0%, 12.03%) 69.13%, hsla(0, 0%, 0%, 0%) 70%);
@@ -65,6 +64,8 @@
 				-ms-transform: translateY(-100vw) translateX(-100vw);
 				-o-transform: translateY(-100vw) translateX(-100vw);
 				transform: translateY(-100vw) translateX(-100vw);
+				
+				transition: transform 1s ease;
 			}
 			
 			#hand
@@ -74,7 +75,6 @@
 				background: white;
 				overflow: hidden;
 				width: calc(45vw - 12px);
-				max-width: calc(45vh - 12px);
 				height: 4px;
 				position: absolute;
 				top: calc(50% - 2px);
@@ -154,7 +154,7 @@
 				}
 			}
 
-			@media screen and (min-width: 800px) 
+			@media screen and (min-width: 750px) 
 			{
 				#clock
 				{
@@ -167,8 +167,7 @@
 
 				#clock-frame
 				{
-					margin-top: 0px;
-					margin: auto;
+					margin: 0 auto;
 				}
 			}
 			
@@ -242,12 +241,27 @@
 				hand.style.OTransform = result;
 				
 				hand.innerHTML = now.getHours() + ":" + now.getMinutes();
+
+				if(time < 1 && navigator.geolocation)
+				{
+					navigator.geolocation.getCurrentPosition(function (position) 
+					{
+						var lat = position.coords.latitude;
+						var long = position.coords.longitude;
+
+						setSun(lat, long);
+					});
+				}
 			}
 			
-			function setSun(hour1, hour2)
+			function setSun(lat, long)
 			{
-				var sunrise = convert(hour1);
-				var sunset = convert(hour2);
+				var times = SunCalc.getTimes(new Date(), lat, long);
+				var sunriseTime = times.sunrise.getHours() + (times.sunrise.getMinutes() / 60);
+				var sunsetTime = times.sunset.getHours() + (times.sunset.getMinutes() / 60);
+
+				var sunrise = convert(sunriseTime);
+				var sunset = convert(sunsetTime);
 
 				var rise = Math.abs(sunrise.rise - sunset.rise);
 				var run = sunrise.run + sunset.run;
@@ -310,7 +324,17 @@
 			}
 			
 			setTime();
-			setSun(6, (6 + 12));
+
+			if (navigator.geolocation)
+			{
+				navigator.geolocation.getCurrentPosition(function (position) 
+				{
+					var lat = position.coords.latitude;
+					var long = position.coords.longitude;
+
+					setSun(lat, long);
+				});
+			}
 			
 			setInterval(function() { setTime() }, 30000);
 		</script>

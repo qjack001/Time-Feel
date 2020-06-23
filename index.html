@@ -32,43 +32,39 @@
                 background: #000;
                 overflow: hidden;
             }
+
+			#clock-frame
+			{
+				width: 100vw;
+				height: 100vw;
+				max-width: 800px;
+				max-height: 800px;
+				box-sizing: border-box;
+				-webkit-mask-image: -webkit-radial-gradient( hsla(0, 0%, 0%, 100%) 60%, hsla(0, 0%, 0%, 99.37%) 61.81%, hsla(0, 0%, 0%, 97.56%) 63.26%, hsla(0, 0%, 0%, 94.71%) 64.4%, hsla(0, 0%, 0%, 90.89%) 65.27%, hsla(0, 0%, 0%, 86.2%) 65.93%, hsla(0, 0%, 0%, 80.68%) 66.4%, hsla(0, 0%, 0%, 74.39%) 66.74%, hsla(0, 0%, 0%, 67.38%) 66.99%, hsla(0, 0%, 0%, 59.69%) 67.2%, hsla(0, 0%, 0%, 51.35%) 67.41%, hsla(0, 0%, 0%, 42.39%) 67.66%, hsla(0, 0%, 0%, 32.84%) 68.0%, hsla(0, 0%, 0%, 22.71%) 68.47%, hsla(0, 0%, 0%, 12.03%) 69.13%, hsla(0, 0%, 0%, 0%) 70%);
+				mask-image: -o-radial-gradient( hsla(0, 0%, 0%, 100%) 60%, hsla(0, 0%, 0%, 99.37%) 61.81%, hsla(0, 0%, 0%, 97.56%) 63.26%, hsla(0, 0%, 0%, 94.71%) 64.4%, hsla(0, 0%, 0%, 90.89%) 65.27%, hsla(0, 0%, 0%, 86.2%) 65.93%, hsla(0, 0%, 0%, 80.68%) 66.4%, hsla(0, 0%, 0%, 74.39%) 66.74%, hsla(0, 0%, 0%, 67.38%) 66.99%, hsla(0, 0%, 0%, 59.69%) 67.2%, hsla(0, 0%, 0%, 51.35%) 67.41%, hsla(0, 0%, 0%, 42.39%) 67.66%, hsla(0, 0%, 0%, 32.84%) 68.0%, hsla(0, 0%, 0%, 22.71%) 68.47%, hsla(0, 0%, 0%, 12.03%) 69.13%, hsla(0, 0%, 0%, 0%) 70%);
+				mask-image: radial-gradient( hsla(0, 0%, 0%, 100%) 60%, hsla(0, 0%, 0%, 99.37%) 61.81%, hsla(0, 0%, 0%, 97.56%) 63.26%, hsla(0, 0%, 0%, 94.71%) 64.4%, hsla(0, 0%, 0%, 90.89%) 65.27%, hsla(0, 0%, 0%, 86.2%) 65.93%, hsla(0, 0%, 0%, 80.68%) 66.4%, hsla(0, 0%, 0%, 74.39%) 66.74%, hsla(0, 0%, 0%, 67.38%) 66.99%, hsla(0, 0%, 0%, 59.69%) 67.2%, hsla(0, 0%, 0%, 51.35%) 67.41%, hsla(0, 0%, 0%, 42.39%) 67.66%, hsla(0, 0%, 0%, 32.84%) 68.0%, hsla(0, 0%, 0%, 22.71%) 68.47%, hsla(0, 0%, 0%, 12.03%) 69.13%, hsla(0, 0%, 0%, 0%) 70%);
+				position: relative;
+				margin-top: 30px;
+			}
             
             #clock
-            {
-                position: relative;
-                width: 100vw;
-                height: 100vh;
-                max-height: 100vw;
-                max-width: 100vh;
-                margin: auto;
-                border-radius: 100%;
-                box-shadow: inset 0 0 12px 20px #000;
-                
+			{   
                 background: rgb(0,166,222); /* Old browsers */
-                background: -moz-linear-gradient(0deg, rgba(47,33,135,1) 0%, rgba(61,43,177,1) 12%, rgba(123,101,184,1) 31%, rgba(220,207,208,1) 50%, rgba(0,166,222,1) 100%);
-                background: -webkit-linear-gradient(0deg, rgba(47,33,135,1) 0%, rgba(61,43,177,1) 12%, rgba(123,101,184,1) 31%, rgba(220,207,208,1) 50%, rgba(0,166,222,1) 100%);
-                background: linear-gradient(0deg, rgba(47,33,135,1) 0%, rgba(61,43,177,1) 12%, rgba(123,101,184,1) 31%, rgba(220,207,208,1) 50%, rgba(0,166,222,1) 100%);
-                
+                background: -moz-linear-gradient(0deg, rgba(47,33,135,1) 0%, rgba(47,33,135,1) 33%, rgba(61,43,177,1) 37%, rgba(123,101,184,1) 43%, rgba(220,207,208,1) 50%, rgba(0,166,222,1) 66%, rgba(0,166,222,1) 100%);
+                background: -webkit-linear-gradient(0deg, rgba(47,33,135,1) 0%, rgba(47,33,135,1) 33%, rgba(61,43,177,1) 37%, rgba(123,101,184,1) 43%, rgba(220,207,208,1) 50%, rgba(0,166,222,1) 66%, rgba(0,166,222,1) 100%);
+                background: linear-gradient(0deg, rgba(47,33,135,1) 0%, rgba(47,33,135,1) 33%, rgba(61,43,177,1) 37%, rgba(123,101,184,1) 43%, rgba(220,207,208,1) 50%, rgba(0,166,222,1) 66%, rgba(0,166,222,1) 100%);
+				width: 100%;
+				height: 300%;
                 -webkit-animation: fade 2s ease;
+				-moz-animation: fade 2s ease;
+				-o-animation: fade 2s ease;
                 animation: fade 2s ease;
-            }
-            
-            #cover
-            {
-                position: absolute;
-                width: calc(100vw - 8px);
-                height: calc(100vh - 8px);
-                max-height: calc(100vw - 8px);
-                max-width: calc(100vh - 8px);
-                top: 1px;
-                left: 1px;
-                right: 1px;
-                margin-left: auto;
-                margin-right: auto;
-                border-radius: 100%;
-                border: 4px solid #000;
-                transform: scale(1.01);
 
+				-webkit-transform: translateY(-100vw);
+				-moz-transform: translateY(-100vw);
+				-ms-transform: translateY(-100vw);
+				-o-transform: translateY(-100vw);
+				transform: translateY(-100vw);
             }
             
             #hand
@@ -87,10 +83,33 @@
                 box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.1);
                 -webkit-transform: rotate(90deg);
                 -ms-transform: rotate(90deg);
+				-moz-transform: rotate(90deg);
+				-o-transform: rotate(90deg);
                 transform: rotate(90deg);
                 -webkit-animation: grow 1.5s ease;
+				-moz-animation: grow 1.5s ease;
+				-o-animation: grow 1.5s ease;
                 animation: grow 1.5s ease;
             }
+
+			#overlay
+			{
+				width: 100vw;
+				height: 100vh;
+				position: fixed;
+				z-index: 99;
+				top: 0;
+				left: 0;
+				bottom: 0;
+				right: 0;
+				background: transparent;
+				mix-blend-mode: soft-light;
+
+                -webkit-animation: fade-color 3s ease-out 2s forwards;
+				-moz-animation: fade-color 3s ease-out 2s forwards;
+				-o-animation: fade-color 3s ease-out 2s forwards;
+                animation: fade-color 3s ease-out 2s forwards;
+			}
             
             @-webkit-keyframes grow
             {
@@ -121,19 +140,43 @@
             {
                 0% { opacity: 0; }
             }
+
+			@keyframes fade-color
+            {
+                0%
+				{
+					background: transparent;
+				}
+
+				100%
+				{
+					background: #530000;
+				}
+            }
+
+			@media screen and (min-width: 800px) 
+            {
+				#clock
+				{
+					-webkit-transform: translateY(-800px);
+					-moz-transform: translateY(-800px);
+					-ms-transform: translateY(-800px);
+					-o-transform: translateY(-800px);
+					transform: translateY(-800px);
+				}
+
+				#clock-frame
+                {
+                    margin-top: 0px;
+					margin: auto;
+                }
+			}
             
             @media (min-height: 600px) and (max-width: 500px) 
             {
-                #clock
+                #clock-frame
                 {
                     margin-top: 100px;
-                }
-            
-                #cover
-                {
-                    top: 101px;
-                    width: 97vw;
-                    height: 97vw;
                 }
             }
         </style>
@@ -162,11 +205,12 @@
     </head>
 
     <body>
-        <div id="clock">
-            <div id="hand">Unable to determine the time.</div>
-        </div>
-        
-        <div id="cover"></div>
+		<div id="overlay"></div>
+
+		<div id="clock-frame">
+			<div id="clock"></div>
+			<div id="hand">Unable to determine the time.</div>
+		</div>
         
         <script>
             if ('serviceWorker' in navigator) 

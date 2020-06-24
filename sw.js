@@ -4,6 +4,7 @@ self.addEventListener('install', function(e)
 		caches.open('Time-Feel').then(function(cache)
 		{
 			return cache.addAll([
+				'https://guinane.xyz/Time-Feel/',
 				'https://guinane.xyz/Time-Feel/index.html',
 				'https://guinane.xyz/Time-Feel/suncalc.js'
 			]);

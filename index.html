@@ -54,6 +54,7 @@
 				mask-image: radial-gradient( hsla(0, 0%, 0%, 100%) 60%, hsla(0, 0%, 0%, 99.37%) 61.81%, hsla(0, 0%, 0%, 97.56%) 63.26%, hsla(0, 0%, 0%, 94.71%) 64.4%, hsla(0, 0%, 0%, 90.89%) 65.27%, hsla(0, 0%, 0%, 86.2%) 65.93%, hsla(0, 0%, 0%, 80.68%) 66.4%, hsla(0, 0%, 0%, 74.39%) 66.74%, hsla(0, 0%, 0%, 67.38%) 66.99%, hsla(0, 0%, 0%, 59.69%) 67.2%, hsla(0, 0%, 0%, 51.35%) 67.41%, hsla(0, 0%, 0%, 42.39%) 67.66%, hsla(0, 0%, 0%, 32.84%) 68.0%, hsla(0, 0%, 0%, 22.71%) 68.47%, hsla(0, 0%, 0%, 12.03%) 69.13%, hsla(0, 0%, 0%, 0%) 70%);
 				position: relative;
 				margin-top: 30px;
+				overflow: hidden;
 			}
 			
 			#clock
@@ -88,7 +89,7 @@
 				background: white;
 				overflow: hidden;
 				width: calc(45vw - 12px);
-				height: 4px;
+				height: 3px;
 				position: absolute;
 				top: calc(50% - 2px);
 				left: 50%;
@@ -151,18 +152,14 @@
 
 			@media screen and (min-width: 750px) 
 			{
-				#clock
-				{
-					-webkit-transform: translateY(-800px);
-					-moz-transform: translateY(-800px);
-					-ms-transform: translateY(-800px);
-					-o-transform: translateY(-800px);
-					transform: translateY(-800px);
-				}
-
 				#clock-frame
 				{
 					margin: 0 auto;
+					-webkit-transform: translateY(calc(-50vw + 50vh));
+					-moz-transform: translateY(calc(-50vw + 50vh));
+					-ms-transform: translateY(calc(-50vw + 50vh));
+					-o-transform: translateY(calc(-50vw + 50vh));
+					transform: translateY(calc(-50vw + 50vh));
 				}
 			}
 			
